@@ -64,14 +64,28 @@ function renderGame() {
     for (let i = 0; i < cards.length; i++) {
         cardsEl.textContent += cards[i] + " "
     }
+
     sumEl.textContent = "Sum: " + sum
 
-    if (!isAlive && !isStand) {
+    if (!isAlive) {
         //The player stands
         if (sum <= 21) {
             message = "You've stood. Waiting for the dealer..."
         } else {
             message = "You're out of the game!"
+        }
+    } else {
+        //The player still on the game and can make choices
+        if (sum <= 20) {
+            message = "Do you want to draw a new card?"
+        } else if (sum === 21) {
+            message = "You've got Blackjack!"
+            hasBlackJack = true
+            playerDealerTurn()
+        } else {
+            message = "You're out of the game!"
+            isAlive = false
+            playerDealerTurn()
         }
     }
 
@@ -91,11 +105,10 @@ function newCard() {
 function playerStands() {
     if (isAlive && !hasBlackJack) {
         isAlive = false
-        isStand = true
         playerDealerTurn()
-        compareHands()
-        renderGame()
+        isStand = true
     }
+    compareHands()
 }
 
 function compareHands() {
@@ -114,4 +127,4 @@ function compareHands() {
 
 function restartGame() {
     location.reload()
-}
+} 
