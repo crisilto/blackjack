@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
+    <title>Blackjack</title>
+</head>
+
+<body>
+    <h1>Blackjack</h1>
+    <main class="container">
+        <p id="message-el">Want to play a round?</p>
+        <div class="columns">
+            <div class="column" data-item="dealer" id="dealer-items">
+                <p>DEALER</p>
+                <p id="dealer-cards-el">Cards: </p>
+                <p id="sum-dealer-el">Sum: </p>
+            </div>
+            <div class="column" data-item="user" id="user-items">
+                <p>YOU</p>
+                <p id="cards-el">Cards: </p>
+                <p id="sum-el">Sum: </p>
+            </div>
+        </div>
+        <div class="button-container">
+            <button id="start-btn" onclick="startGame()">START GAME</button>
+            <button id="card-btn" onclick="newCard()">NEW CARD</button>
+            <button id="stand-btn" onclick="playerStands()">STAND</button>
+            <button id="restart-btn" onclick="restartGame()">RESET</button>
+        </div>
+        <p id="player-el"></p>
+        <p id="result-el"></p>
+    </main>
+    <script src="index.js"></script>
+</body>
+
+</html>
